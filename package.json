@@ -1,0 +1,13 @@
+{
+  "name": "gdg-node-track-task1",
+  "version": "1.0.0",
+  "description": "GDG Node.js Track - Task 1 Solution",
+  "main": "index.js",
+  "scripts": {
+    "start": "node task1/index.js"
+  },
+  "keywords": [],
+  "author": "Aneni Kidanu",
+  "license": "MIT",
+  "type": "commonjs"
+}
