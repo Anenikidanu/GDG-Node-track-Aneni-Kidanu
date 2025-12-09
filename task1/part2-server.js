@@ -1,51 +1,35 @@
 const http = require('http');
 
 const PORT = 4000;
-
-// In-memory students array
 let students = [
     { id: 1, name: "aneni kidanu" },
     { id: 2, name: "azeb yirga" },
     { id: 3, name: "bamlak chernet" }
 ];
-
-// Helper function to find student by ID
 const findStudentById = (id) => {
     return students.find(student => student.id === parseInt(id));
 };
-
-// Helper function to generate unique ID
 const generateId = () => {
     return students.length > 0 ? Math.max(...students.map(s => s.id)) + 1 : 1;
 };
 
 const server = http.createServer((req, res) => {
-    // Set CORS headers
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    
-    // Handle preflight requests
     if (req.method === 'OPTIONS') {
         res.writeHead(200);
         res.end();
         return;
     }
-    
-    // Set default content type
     res.setHeader('Content-Type', 'application/json');
-    
-    // Parse URL
     const url = req.url;
     const method = req.method;
-    
-    // Route: GET /students
     if (url === '/students' && method === 'GET') {
         res.writeHead(200);
         res.end(JSON.stringify(students));
         
     } 
-    // Route: POST /students
     else if (url === '/students' && method === 'POST') {
         let body = '';
         
@@ -56,21 +40,15 @@ const server = http.createServer((req, res) => {
         req.on('end', () => {
             try {
                 const data = JSON.parse(body);
-                
-                // Validate request body
                 if (!data.name || typeof data.name !== 'string') {
                     res.writeHead(400);
                     res.end(JSON.stringify({ error: "Name is required and must be a string" }));
                     return;
                 }
-                
-                // Create new student
                 const newStudent = {
                     id: generateId(),
                     name: data.name.trim()
                 };
-                
-                // Add to array
                 students.push(newStudent);
                 
                 res.writeHead(201);
@@ -82,7 +60,6 @@ const server = http.createServer((req, res) => {
         });
         
     } 
-    // Route: PUT /students/:id
     else if (url.startsWith('/students/') && method === 'PUT') {
         const id = url.split('/')[2];
         
@@ -101,8 +78,6 @@ const server = http.createServer((req, res) => {
         req.on('end', () => {
             try {
                 const data = JSON.parse(body);
-                
-                // Validate request body
                 if (!data.name || typeof data.name !== 'string') {
                     res.writeHead(400);
                     res.end(JSON.stringify({ error: "Name is required and must be a string" }));
@@ -117,8 +92,6 @@ const server = http.createServer((req, res) => {
                     res.end(JSON.stringify({ error: `Student with ID ${id} not found` }));
                     return;
                 }
-                
-                // Update student
                 students[studentIndex].name = data.name.trim();
                 
                 res.writeHead(200);
@@ -130,7 +103,6 @@ const server = http.createServer((req, res) => {
         });
         
     } 
-    // Route: DELETE /students/:id
     else if (url.startsWith('/students/') && method === 'DELETE') {
         const id = url.split('/')[2];
         
@@ -148,8 +120,6 @@ const server = http.createServer((req, res) => {
             res.end(JSON.stringify({ error: `Student with ID ${id} not found` }));
             return;
         }
-        
-        // Remove student
         const deletedStudent = students.splice(studentIndex, 1)[0];
         
         res.writeHead(200);
@@ -159,7 +129,6 @@ const server = http.createServer((req, res) => {
         }));
         
     } 
-    // Route not found
     else {
         res.writeHead(404);
         res.end(JSON.stringify({ error: "Route not found" }));
