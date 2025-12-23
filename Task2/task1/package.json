@@ -1,0 +1,14 @@
+{
+  "name": "task1",
+  "version": "1.0.0",
+  "description": "Basic HTTP Server and Student REST API",
+  "main": "index.js",
+  "scripts": {
+    "start:part1": "node part1-server.js",
+    "start:part2": "node part2-server.js",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Aneni Kidanu",
+  "license": "MIT"
+}
