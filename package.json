@@ -1,0 +1,27 @@
+{
+  "name": "gdg-node-track-task1",
+  "version": "1.0.0",
+  "description": "GDG Node.js Track - Task 1 Solution + Bookstore API",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js"
+  },
+  "keywords": [],
+  "author": "Aneni Kidanu",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^4.22.1",
+    "joi": "^17.13.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anenikidanu/GDG-Node-track-Aneni-Kidanu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Anenikidanu/GDG-Node-track-Aneni-Kidanu/issues"
+  },
+  "homepage": "https://github.com/Anenikidanu/GDG-Node-track-Aneni-Kidanu#readme",
+  "devDependencies": {}
+}
