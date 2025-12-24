@@ -1,0 +1,22 @@
+{
+  "name": "gdg-node-track-aneni-kidanu",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GDG Node Track Assignments",
+  "scripts": {
+    "task1": "node task1/index.js",
+    "task2": "node task2/index.js",
+    "bookstore": "node bookstore-api/src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anenikidanu/GDG-Node-track-Aneni-Kidanu.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anenikidanu/GDG-Node-track-Aneni-Kidanu/issues"
+  },
+  "homepage": "https://github.com/Anenikidanu/GDG-Node-track-Aneni-Kidanu#readme"
+}
